@@ -24,7 +24,7 @@ form {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;  /* Ajustei para ficar mais consistente */
     color: #555;
 }
 
@@ -32,6 +32,7 @@ input, textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
+    box-sizing: border-box;  /* Adicionado para evitar problemas de layout */
 }
 
 button {
@@ -45,23 +46,6 @@ button {
 
 button:hover {
     background-color: #45a049;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-li:hover {
-    background-color: #f0f0f0;
 }
 
 .modal {
@@ -95,10 +79,6 @@ li:hover {
     font-size: 20px;
     cursor: pointer;
     color: #555;
-}
-
-h1 {
-    color: #333;
 }
 
 /* Estilos para a tabela */
@@ -141,17 +121,9 @@ h1 {
     margin-top: 20px;
 }
 
-#consulta-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-#consulta-form input, #consulta-form textarea {
-    width: 100%;
-    padding: 8px;
+#consulta-form textarea {
+    /* Removido o estilo redundante */
     margin-bottom: 16px;
-    box-sizing: border-box;
 }
 
 /* Adicione ao seu arquivo de estilos existente */
@@ -187,7 +159,7 @@ h1 {
 
 /* Estilos para os botões de ação na tabela */
 #consultas-list .btn-editar,
-#consultas-list .btn-excluir {
+#consultas-list .btn-deletar {
     display: inline-block;
     padding: 5px 10px;
     margin: 0;
@@ -195,15 +167,12 @@ h1 {
     border-radius: 4px;
 }
 
-#consultas-list .btn-editar {
+td .btn-editar {
     background-color: #3498db;
     color: #fff;
 }
 
-#consultas-list .btn-excluir {
+td .btn-deletar {
     background-color: #e74c3c;
     color: #fff;
 }
-
-
-

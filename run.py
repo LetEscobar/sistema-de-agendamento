@@ -1,6 +1,6 @@
 from flask import *
 from datetime import datetime
-from sqlalchemy import create_engine, Column, Date, Integer, String, Text, Time, ForeignKey
+from sqlalchemy import Boolean, create_engine, Column, Date, Integer, String, Text, Time, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import sessionmaker
@@ -19,6 +19,7 @@ class Consulta(Base):
     data_consulta = Column(Date, nullable=False)
     hora_consulta = Column(Time, nullable=False)
     informacoes_adicionais = Column(Text)
+    deletado = Column(Boolean, default=False)
 
     def __repr__(self):
         return f"Consulta({self.cliente_nome}, {self.data_consulta}, {self.hora_consulta})"
@@ -35,14 +36,16 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
 def home():
-    consultas = db.query(Consulta).all()
+    consultas = db.query(Consulta).filter(Consulta.deletado == False).all()
     return render_template('home.html', consultas=consultas)
+
 
 @app.route('/deletar_consulta/<int:consulta_id>', methods=['GET'])
 def deletar_consulta(consulta_id):
     consulta = db.query(Consulta).get(consulta_id)
+
     if consulta:
-        db.delete(consulta)
+        consulta.deletado = True
         db.commit()
     return redirect('/')
 
@@ -51,12 +54,16 @@ def deletar_consulta(consulta_id):
 def editar_consulta():
     consulta = db.query(Consulta).get(request.form['id'])
     consulta.paciente = request.form['paciente']
-    consulta.data_consulta = datetime.strptime(request.form['data_consulta'], '%Y-%m-%d').date()
-    consulta.hora_consulta = datetime.strptime(request.form['hora_consulta'], '%H:%M').time()
-    consulta.informacoes_adicionais = request.form.get('informacoes_adicionais', None)
+    consulta.data_consulta = datetime.strptime(
+        request.form['data_consulta'], '%Y-%m-%d').date()
+    consulta.hora_consulta = datetime.strptime(
+        request.form['hora_consulta'], '%H:%M').time()
+    consulta.informacoes_adicionais = request.form.get(
+        'informacoes_adicionais', None)
 
     db.commit()
     return redirect('/')
+
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
@@ -68,7 +75,7 @@ def cadastro():
     informacoes_adicionais = request.form.get('informacoes_adicionais', None)
 
     nova_consulta = Consulta(paciente=paciente, data_consulta=data_consulta,
-                             hora_consulta=hora_consulta, informacoes_adicionais=informacoes_adicionais)
+                             hora_consulta=hora_consulta, informacoes_adicionais=informacoes_adicionais, deletado=False)
 
     db.add(nova_consulta)
     db.commit()

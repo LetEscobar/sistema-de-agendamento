@@ -16,11 +16,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>paciente</th>
-                    <th>data_consulta</th>
-                    <th>hora_consulta</th>
-                    <th>informacoes_adicionais</th>
-                    <th>Ação</th>
+                    <th>Nome do paciente</th>
+                    <th>Data da consulta</th>
+                    <th>Hrário da consulta</th>
+                    <th>Informações adicionais</th>
+                    <th>Ações</th>
             </thead>
             <tbody>
                 {% for consulta in consultas %}
@@ -31,9 +31,9 @@
                         <td>{{ consulta.hora_consulta }}</td>
                         <td>{{ consulta.informacoes_adicionais }}</td>
                         <td>
-                            <button id="btn-nova-consulta" onclick="edit({{consulta.id}},'{{consulta.paciente}}','{{consulta.data_consulta}}','{{consulta.hora_consulta}}','{{consulta.informacoes_adicionais}}')">Editar</button>
+                            <button class="btn-editar" id="btn-nova-consulta" onclick="edit('{{consulta.id}}','{{consulta.paciente}}','{{consulta.data_consulta}}','{{consulta.hora_consulta}}','{{consulta.informacoes_adicionais}}')">Editar</button>
                             <a href="/deletar_consulta/{{consulta.id}}">
-                                <button>Deletar</button>
+                                <button class="btn-deletar">Deletar</button>
                             </a>
                         </td>
                     </tr>
