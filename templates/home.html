@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+
+    <title>Consultas Agendadas</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Consultas Agendadas</h1>
+        <button id="btn-nova-consulta">Adicionar Nova Consulta</button>
+
+        <table id="consultas-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>paciente</th>
+                    <th>data_consulta</th>
+                    <th>hora_consulta</th>
+                    <th>informacoes_adicionais</th>
+                    <th>Ação</th>
+            </thead>
+            <tbody>
+                {% for consulta in consultas %}
+                    <tr>
+                        <td>{{ consulta.id }}</td>
+                        <td>{{ consulta.paciente }}</td>
+                        <td>{{ consulta.data_consulta }}</td>
+                        <td>{{ consulta.hora_consulta }}</td>
+                        <td>{{ consulta.informacoes_adicionais }}</td>
+                        <td>
+                            <button id="btn-nova-consulta" onclick="edit({{consulta.id}},'{{consulta.paciente}}','{{consulta.data_consulta}}','{{consulta.hora_consulta}}','{{consulta.informacoes_adicionais}}')">Editar</button>
+                            <a href="/deletar_consulta/{{consulta.id}}">
+                                <button>Deletar</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para Inserir Nova Consulta -->
+    <div id="modal-nova-consulta" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Agendar uma nova consulta</h2>
+            <form action="cadastro" method="POST" id="consulta-form">
+                <input type="hidden" name="id" id="id">
+
+                <label for="cliente-nome">Nome do Cliente:</label>
+                <input name="paciente" id="paciente" required>
+
+                <label for="data-consulta">Data da Consulta:</label>
+                <input type="date" name="data_consulta" id="data_consulta" required>
+
+                <label for="hora-consulta">Hora da Consulta:</label>
+                <input type="time" name="hora_consulta" id="hora_consulta" required>
+
+                <label for="informacoes-adicionais">Informações Adicionais:</label>
+                <textarea name="informacoes_adicionais" id="informacoes_adicionais"></textarea>
+
+                <button class="agendar-consulta" type="submit">Salvar</button>
+
+                <!-- Botão de agendar por voz -->
+                <button type="button" id="btn-agendar-voz">
+                    🎤 Preencher por Voz
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../static/consultas.js"></script>
+</body>
+</html>

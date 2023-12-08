@@ -1,0 +1,209 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 50px 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+li:hover {
+    background-color: #f0f0f0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Estilos para a tabela */
+#consultas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#consultas-table th, #consultas-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#consultas-table th {
+    background-color: #f2f2f2;
+}
+
+#consultas-list tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilos para o botão de Nova Consulta */
+#btn-nova-consulta {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btn-nova-consulta:hover {
+    background-color: #45a049;
+}
+
+/* Estilos adicionais para o formulário dentro do modal */
+#consulta-form {
+    margin-top: 20px;
+}
+
+#consulta-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+#consulta-form input, #consulta-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* Adicione ao seu arquivo de estilos existente */
+#btn-agendar-voz {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btn-agendar-voz:hover {
+    background-color: #2980b9;
+}
+
+#btn-agendar-voz i {
+    margin-right: 5px;
+}
+
+#consulta-form .agendar-consulta {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#consulta-form .agendar-consulta:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para os botões de ação na tabela */
+#consultas-list .btn-editar,
+#consultas-list .btn-excluir {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#consultas-list .btn-editar {
+    background-color: #3498db;
+    color: #fff;
+}
+
+#consultas-list .btn-excluir {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+
+
