@@ -36,6 +36,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
 def home():
+    if 'logado' not in session or not session['logado']:
+        return redirect('/login')
     consultas = db.query(Consulta).filter(Consulta.deletado == False).all()
     return render_template('home.html', consultas=consultas)
 
